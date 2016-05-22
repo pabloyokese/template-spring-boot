@@ -1,0 +1,11 @@
+{
+  "bundle":"jquery",
+  "assets":[
+    {
+      "version":"1.11.0",
+      "locations":{
+        "remote":"//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js" 
+      }
+    }
+  ]
+}
