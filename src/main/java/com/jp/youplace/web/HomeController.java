@@ -18,7 +18,7 @@ public class HomeController{
 	
 	@RequestMapping("/")
 	public String showHome(){
-		User user = new User(1,"name");
+		User user = new User(0,"name");
 		userService.save(user);
 		System.out.println("user saved");
 		

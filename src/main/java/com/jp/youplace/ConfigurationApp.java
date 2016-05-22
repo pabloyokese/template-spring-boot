@@ -14,9 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class ConfigurationApp extends WebSecurityConfigurerAdapter {
 	
-	
-	
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http
@@ -30,6 +27,9 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
 		.and()
 		.logout()
 		.permitAll();
+		
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
 	
 	@Autowired
