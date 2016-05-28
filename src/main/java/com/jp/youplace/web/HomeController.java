@@ -18,14 +18,7 @@ public class HomeController{
 	
 	@RequestMapping("/")
 	public String showHome(){
-		User user = new User(0,"name");
-		userService.save(user);
-		System.out.println("user saved");
-		
-		List<User> findAll = userService.findAll();
-		for (User userItem : findAll) {
-			System.out.println(userItem);
-		}
+	
 		return "home";
 	}
 	
