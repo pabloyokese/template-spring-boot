@@ -9,5 +9,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	List<User> findAll();
 
 	<S extends User> S save(S entity);
+	
+	User findOne(Long id); 
+	
+	long count();    
 
 }
