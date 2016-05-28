@@ -14,7 +14,7 @@ public class UserService {
 	UserRepository userRepository;
 	
 	public List<User> findAll(){
-		return userRepository.findAll();
+		return (List<User>) userRepository.findAll();
 	}
 	
 	public User findOne(Long id){
@@ -29,7 +29,7 @@ public class UserService {
 		return userRepository.count();
 	}
 	
-	public void delete(Long id){
-		userRepository.delete(id);
+	public void delete(User user){
+		userRepository.delete(user);
 	}
 }

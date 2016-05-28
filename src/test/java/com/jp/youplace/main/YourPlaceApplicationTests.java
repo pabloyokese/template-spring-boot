@@ -54,7 +54,7 @@ public class YourPlaceApplicationTests {
 	public void deleteUser() {
 		User user = setUpUser();
 		userService.save(user);
-		userService.delete(user.getId());
+		userService.delete(user);
 
 		long totalUsers = userService.count();
 		assertEquals(totalUsers, 2);
