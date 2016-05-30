@@ -13,6 +13,8 @@ import com.jp.youplace.service.UserService;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = YourPlaceApplication.class)
 @WebAppConfiguration
@@ -58,6 +60,16 @@ public class YourPlaceApplicationTests {
 
 		long totalUsers = userService.count();
 		assertEquals(totalUsers, 2);
+	}
+	
+	@Test
+	public void listUser(){
+		List<User> users = userService.findAll();
+		for (User user : users) {
+			assertNotNull(user);
+		}
+		long totalUsers = userService.count();
+		assertEquals(totalUsers, users.size());
 	}
 
 }
