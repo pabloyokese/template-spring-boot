@@ -1,6 +1,7 @@
 package com.jp.youplace.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.NoRepositoryBean;
@@ -12,7 +13,7 @@ public interface CustomRepository<T, ID extends Serializable> extends CrudReposi
 
 	T findOne(ID primaryKey);
 
-	Iterable<T> findAll();
+	List<T> findAll();
 
 	long count();
 
