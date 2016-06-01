@@ -1,9 +1,14 @@
 package com.jp.youplace.domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 
 @Entity
 public class User {
@@ -18,6 +23,8 @@ public class User {
 	private String email;
 	private String user;
 	private String password;
+	@ManyToMany(fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
 	public User() {
 	}
