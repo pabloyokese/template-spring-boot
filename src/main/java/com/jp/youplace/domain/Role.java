@@ -11,20 +11,27 @@ import javax.persistence.Id;
 public class Role {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long Id;
-	private String name;
+	private Long id;
+	private String roleName;
+	private String userName;
 	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return roleName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String roleName) {
+		this.roleName = roleName;
 	}
 	
 }

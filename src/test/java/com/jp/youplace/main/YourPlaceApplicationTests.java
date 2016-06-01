@@ -34,11 +34,11 @@ public class YourPlaceApplicationTests {
 		User user = setUpUser();
 		userService.save(user);
 		String dataToUpdate= "pabloyokese54";
-		user.setUser(dataToUpdate);
+		user.setUserName(dataToUpdate);
 		userService.save(user);
 		Long userSaved = user.getId();
 		User userFromDB = userService.findOne(userSaved);
-		assertEquals(userFromDB.getUser(), dataToUpdate);
+		assertEquals(userFromDB.getUserName(), dataToUpdate);
 	}
 
 	public User setUpUser() {
@@ -46,7 +46,7 @@ public class YourPlaceApplicationTests {
 		user.setFirstName("Juan Pablo Oquendo");
 		user.setLastName("Oquendo");
 		user.setGender("M");
-		user.setUser("pabloyokese");
+		user.setUserName("pabloyokese");
 		user.setPassword("123");
 		user.setEmail("jpo_54@hotmail.com");
 		return user;
