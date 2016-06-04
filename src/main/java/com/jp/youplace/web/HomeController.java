@@ -14,9 +14,14 @@ public class HomeController{
 	@Autowired
 	UserService userService;
 	
+	/**
+	 * All people can see this page
+	 * this is the place to put all welcome information
+	 * @return
+	 */
 	@RequestMapping("/")
-	public String showHome(){
-		return "home";
+	public String showIndex(){
+		return "index";
 	}
 	
 	@RequestMapping("/login")
@@ -24,9 +29,9 @@ public class HomeController{
 		return "login";
 	}
 	
-	@RequestMapping("/hello")
-	public String showHello(){
-		return "hello";
+	@RequestMapping("/dashboard")
+	public String showDashBoard(){
+		return "dashboard";
 	}
 	
 }

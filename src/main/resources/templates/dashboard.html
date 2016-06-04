@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+		This is the dashboard here we have to put the administrator!
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
+	</div>
+</body>
+</html>

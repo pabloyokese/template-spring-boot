@@ -14,7 +14,6 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String roleName;
-	private String userName;
 
 	@ManyToMany(mappedBy="roles")
 	private List<User> users;
@@ -25,14 +24,6 @@ public class Role {
 
 	public List<User> getUsers() {
 		return users;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public Long getId() {

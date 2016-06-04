@@ -4,6 +4,4 @@ import java.util.List;
 
 public interface RoleRepository extends CustomRepository<Role, Long>{
 
-	List<String> findRolNameByUserName(String userName);
-
 }

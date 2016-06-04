@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ddl="http://www.thymeleaf.org/dandelion"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Spring Security Example</title>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"
+	th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}"
+	href="/bower_components/dist/css/bootstrap.css"></link>
+<div layout:fragment="custom-css"></div>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/header :: header"></div>
+		<div layout:fragment="content">
+			<!-- Content -->
+		</div>
+		<div th:replace="fragments/footer :: footer">&copy; 2014 The
+			Static Templates</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script th:src="@{/bower_components/jquery/dist/jquery.js}"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script
+		th:src="@{/bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+</body>
+</html>
