@@ -1,4 +1,4 @@
-package com.jp.youplace.service;
+package com.jp.youplace.security;
 
 import java.util.Collection;
 import java.util.List;

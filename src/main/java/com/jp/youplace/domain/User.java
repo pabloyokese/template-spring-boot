@@ -1,9 +1,14 @@
 package com.jp.youplace.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 
 
@@ -20,7 +25,10 @@ public class User {
 	private String email;
 	private String userName;
 	private String password;
-
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable
+	private List<Role> roles;
+ 
 	public User() {
 	}
 	
@@ -34,6 +42,14 @@ public class User {
 		this.email = user.email;
 		this.userName = user.userName;
 		this.password = user.password;
+	}
+	
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	
+	public List<Role> getRoles() {
+		return roles;
 	}
 
 	public User(long id, String firstName, String lastName, Integer age, String gender, String email, String user,

@@ -1,6 +1,5 @@
 package com.jp.youplace;
 
-import org.h2.server.web.WebServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -52,22 +51,7 @@ public class ConfigurationApp extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	}
-	
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-		auth
-		.inMemoryAuthentication()
-		.withUser("user")
-		.password("password")
-		.roles("USER");
-	}
-	
-	@Bean
-	public ServletRegistrationBean h2servletRegistration() {
-	    ServletRegistrationBean registration = new ServletRegistrationBean(new WebServlet());
-	    registration.addUrlMappings("/console/*");
-	    return registration;
-	}
+
 	
 	@Bean
 	public DandelionFilter dandelionFilter(){
