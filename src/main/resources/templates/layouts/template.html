@@ -12,11 +12,14 @@
 <link rel="stylesheet" type="text/css"
 	th:href="@{/bower_components/bootstrap/dist/css/bootstrap.css}"
 	href="/bower_components/dist/css/bootstrap.css"></link>
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/assets/css/dashboard.css}"
+		href="/assets/css/dashboard.css"></link>
 <div layout:fragment="custom-css"></div>
 </head>
 <body>
-	<div class="container">
-		<div th:replace="fragments/header :: header"></div>
+	<div class="container-fluid">
+	<div th:replace="fragments/header :: header"></div>
 		<div layout:fragment="content">
 			<!-- Content -->
 		</div>

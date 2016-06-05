@@ -4,6 +4,7 @@ package com.jp.youplace.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jp.youplace.service.UserService;
@@ -20,17 +21,20 @@ public class HomeController{
 	 * @return
 	 */
 	@RequestMapping("/")
-	public String showIndex(){
+	public String showIndex(Model model){
+		model.addAttribute("current","index");
 		return "index";
 	}
 	
 	@RequestMapping("/login")
-	public String showLogin(){
+	public String showLogin(Model model){
+		model.addAttribute("current","login");
 		return "login";
 	}
 	
 	@RequestMapping("/dashboard")
-	public String showDashBoard(){
+	public String showDashBoard(Model model){
+		model.addAttribute("current","dashboard");
 		return "dashboard";
 	}
 	

@@ -2,16 +2,16 @@
 <html layout:decorator="layouts/template">
 <head>
 <title>Task List</title>
-<div layout:fragment="custom-css">
+<block layout:fragment="custom-css">
 	<link rel="stylesheet" type="text/css"
 		th:href="@{/assets/css/custom-css.css}"
 		href="/assets/css/custom-css.css"></link>
-</div>
+</block>
 </head>
 <body>
 	<div layout:fragment="content">
-		<div th:if="${param.error}">Invalid username and password.</div>
-		<div th:if="${param.logout}">You have been logged out.</div>
+		<div class="alert alert-danger" th:if="${param.error}">Invalid username and password.</div>
+		<div class="alert alert-info" th:if="${param.logout}">You have been logged out.</div>
 		<form class="form-signin" th:action="@{/login}" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="inputEmail" class="sr-only">Email address</label> <input

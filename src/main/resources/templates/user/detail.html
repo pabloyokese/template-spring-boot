@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>User</h1>
+		<span th:text="${user.firstName}">Juan </span> <span
+			th:text="${user.lastName}">Oquendo</span> <span
+			th:text="${user.userName}">pabloyokese</span> <span
+			th:text="${user.age}">30</span>
+		<p>
+			<a href="../home.html" th:href="@{/user/}">Return to user list</a>
+		</p>
+	</div>
+</body>
+</html>

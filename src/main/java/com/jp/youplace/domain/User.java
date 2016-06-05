@@ -25,6 +25,7 @@ public class User {
 	private String email;
 	private String userName;
 	private String password;
+	private boolean enabled;
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable
 	private List<Role> roles;
@@ -33,8 +34,7 @@ public class User {
 	}
 	
 	public User(User user) {
-		super();
-		id = user.id;
+		this.id = user.id;
 		this.firstName = user.firstName;
 		this.lastName = user.lastName;
 		this.age = user.age;
@@ -42,8 +42,12 @@ public class User {
 		this.email = user.email;
 		this.userName = user.userName;
 		this.password = user.password;
+		this.enabled = user.enabled;
+		this.roles = user.roles;
 	}
-	
+
+
+
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
@@ -53,7 +57,7 @@ public class User {
 	}
 
 	public User(long id, String firstName, String lastName, Integer age, String gender, String email, String user,
-			String password) {
+			String password, boolean enabled) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -63,7 +67,21 @@ public class User {
 		this.email = email;
 		this.userName = user;
 		this.password = password;
+		this.enabled = enabled;
 	}
+	
+	
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+
 
 	public String getFirstName() {
 		return firstName;

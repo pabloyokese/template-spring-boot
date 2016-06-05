@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>User list</h1>
+		<a href="" th:href="@{/user/register/}" class="btn btn-primary">Add
+			new user</a>
+		<table class="table">
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Username</th>
+				<th>Age</th>
+				<th>Gender</th>
+				<th>Email</th>
+				<th>Enable</th>
+				<th>Options</th>
+			</tr>
+			<tr th:each="user : ${listUsers}">
+				<td th:text="${user.firstName}">Juan</td>
+				<td th:text="${user.lastName}">Oquendo</td>
+				<td th:text="${user.userName}">pabloyokese</td>
+				<td th:text="${user.age}">30</td>
+				<td th:text="${user.gender}">M</td>
+				<td th:text="${user.email}">M</td>
+				<td th:text="${user.enabled} == true ? 'YES':'NO'">M</td>
+				<td>
+					<a th:href="@{'/user/'+${user.id}}" class="btn">See</a> 
+					<a th:href="@{'/user/update/'+${user.id}}" class="btn">Update</a> 
+					<a th:href="@{'/user/delete/'+${user.id}}" class="btn" >Delete</a>
+				</td>
+			</tr>
+		</table>
+
+		<p>
+			<a href="../home.html" th:href="@{/dashboard/}">Return to
+				Dashboard</a>
+		</p>
+	</div>
+</body>
+</html>
