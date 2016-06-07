@@ -9,7 +9,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.jp.youplace.YourPlaceApplication;
 import com.jp.youplace.domain.User;
-import com.jp.youplace.service.UserService;
+import com.jp.youplace.service.impl.UserService;
 
 import static org.junit.Assert.*;
 

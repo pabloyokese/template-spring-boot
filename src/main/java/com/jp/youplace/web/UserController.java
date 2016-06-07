@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jp.youplace.domain.User;
-import com.jp.youplace.service.UserService;
+import com.jp.youplace.service.IUserService;
+import com.jp.youplace.service.impl.UserService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	UserService userService;
+	IUserService userService;
 
 	@ModelAttribute("user")
 	public User constructUser() {

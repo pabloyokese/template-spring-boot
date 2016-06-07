@@ -7,13 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.jp.youplace.service.UserService;
+import com.jp.youplace.service.IUserService;
+import com.jp.youplace.service.impl.UserService;
 
 @Controller
 public class HomeController{
 	
 	@Autowired
-	UserService userService;
+	IUserService userService;
 	
 	/**
 	 * All people can see this page

@@ -1,4 +1,4 @@
-package com.jp.youplace.service;
+package com.jp.youplace.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;

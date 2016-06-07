@@ -1,4 +1,4 @@
-package com.jp.youplace.service;
+package com.jp.youplace.service.impl;
 
 import java.util.List;
 
@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.jp.youplace.domain.User;
 import com.jp.youplace.domain.UserRepository;
+import com.jp.youplace.service.IUserService;
 
 @Service
 @Transactional
-public class UserService {
+public class UserService implements IUserService {
 	@Autowired
 	UserRepository userRepository;
 
