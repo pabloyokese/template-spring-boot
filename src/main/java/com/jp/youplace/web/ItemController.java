@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.jp.youplace.domain.Category;
 import com.jp.youplace.domain.Item;
 import com.jp.youplace.domain.Role;
+import com.jp.youplace.service.ICategoryService;
 import com.jp.youplace.service.IItemService;
 import com.jp.youplace.service.IRoleService;
 
@@ -21,6 +23,9 @@ public class ItemController {
 	
 	@Autowired
 	IItemService itemService;
+	
+	@Autowired
+	ICategoryService categoryService;
 	
 	@ModelAttribute("item")
 	public Item createItem(){
@@ -44,8 +49,10 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value="/process-form")
-	public String goForm(Model model,@ModelAttribute("item") Item item){
+	public String goForm(Model model){
+		List<Category> categories = categoryService.findAll();
 		model.addAttribute("current","item");
+		model.addAttribute("allCategories",categories);
 		return "item/form";
 	}
 	
@@ -59,7 +66,9 @@ public class ItemController {
 	@RequestMapping("/update/{id}")
 	public String registerRole(Model model,@PathVariable long id){
 		Item item = itemService.findOne(id);
+		List<Category> categories = categoryService.findAll();
 		model.addAttribute("item",item);
+		model.addAttribute("allCategories",categories);
 		model.addAttribute("current","item");
 		return "item/form";
 	}

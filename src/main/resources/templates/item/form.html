@@ -31,6 +31,19 @@
 					id="priceInput" name="price" placeholder="Price"
 					th:value="${item.price}" />
 			</div>
+			<label>Select Category </label>
+			<div class="form-group">
+			<select
+            name="category"
+            class="form-control"
+            id="categories">
+            <option th:if="${item.category == null}"></option>
+            <option th:each = "category : ${allCategories}" 
+            th:selected="${item.category} != null AND ${category.id == item.category.id} ? selected" 
+            th:value="${category.id}" th:text="${category.name}">
+            </option>
+          </select>
+          </div>
 			
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
