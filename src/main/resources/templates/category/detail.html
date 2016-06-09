@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>User</h1>
+		<span th:text="${category.name}">Juan </span> 
+		<p>
+			<a href="../home.html" th:href="@{/category/}">Return to Category list</a>
+		</p>
+	</div>
+</body>
+</html>

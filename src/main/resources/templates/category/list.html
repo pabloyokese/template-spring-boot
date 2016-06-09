@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>Category list</h1>
+		<a href="" th:href="@{/category/process-form/}" class="btn btn-primary">Add
+			new Category</a>
+		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Options</th>
+			</tr>
+			<tr th:each="category : ${categories}">
+				<td th:text="${category.name}">ADMIN</td>
+				<td>
+					<a th:href="@{'/category/'+${category.id}}" class="btn">See</a> 
+					<a th:href="@{'/category/update/'+${category.id}}" class="btn">Update</a> 
+					<a th:href="@{'/category/delete/'+${category.id}}" class="btn" >Delete</a>
+				</td>
+			</tr>
+		</table>
+
+		<p>
+			<a href="../home.html" th:href="@{/dashboard/}">Return to
+				Dashboard</a>
+		</p>
+	</div>
+</body>
+</html>

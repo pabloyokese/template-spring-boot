@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>Category</h1>
+		<div th:if="${#bools.isTrue(param.success)}" class="alert alert-success">
+		Registration successfull!
+		</div>
+		<form th:action="@{/category/process-form/}" method="post">
+			<input type="hidden" name="id" th:value="${category.id}" />
+			<div class="form-group">
+				<label>Name</label> <input type="text" class="form-control"
+					id="nameInput" name="name" placeholder="Name"
+					th:value="${category.name}" />
+			</div>
+			
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+		<p>
+			<a href="../home.html" th:href="@{/category/}">Return to Category list</a>
+		</p>
+	</div>
+</body>
+</html>

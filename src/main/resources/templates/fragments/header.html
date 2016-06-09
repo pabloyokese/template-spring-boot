@@ -24,6 +24,8 @@
 						th:href="@{/user/}">Users</a></li>
 					<li th:class="${current} == 'role' ? 'active' : ''"><a
 						th:href="@{/role/}">Roles</a></li>
+					<li th:class="${current} == 'category' ? 'active' : ''"><a
+						th:href="@{/category/}">Categories</a></li>
 					<li th:class="${current} == 'item' ? 'active' : ''"><a
 						th:href="@{/item/}">Items</a></li>
 					<li sec:authorize="!isAuthenticated()"

@@ -22,9 +22,9 @@ public class ItemController {
 	@Autowired
 	IItemService itemService;
 	
-	@ModelAttribute("role")
-	public Role createRole(){
-		return new Role();
+	@ModelAttribute("item")
+	public Item createItem(){
+		return new Item();
 	}
 	
 	@RequestMapping("/")

@@ -9,8 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
-
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -26,13 +25,15 @@ public class User {
 	private String userName;
 	private String password;
 	private boolean enabled;
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable
 	private List<Role> roles;
- 
+	@OneToMany(mappedBy = "user")
+	private List<Item> items;
+
 	public User() {
 	}
-	
+
 	public User(User user) {
 		this.id = user.id;
 		this.firstName = user.firstName;
@@ -46,12 +47,10 @@ public class User {
 		this.roles = user.roles;
 	}
 
-
-
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 	public List<Role> getRoles() {
 		return roles;
 	}
@@ -69,19 +68,14 @@ public class User {
 		this.password = password;
 		this.enabled = enabled;
 	}
-	
-	
 
 	public boolean isEnabled() {
 		return enabled;
 	}
 
-
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;
@@ -145,6 +139,14 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 }
