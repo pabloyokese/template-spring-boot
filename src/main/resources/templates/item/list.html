@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>Item list</h1>
+		<a href="" th:href="@{/item/process-form/}" class="btn btn-primary">Add
+			new Item</a>
+		<table class="table">
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Stock</th>
+				<th>Price</th>
+				<th>Options</th>
+			</tr>
+			<tr th:each="item : ${items}">
+				<td th:text="${item.name}">ADMIN</td>
+				<td th:text="${item.description}">Descrition of admin</td>
+				<td th:text="${item.stock}">Descrition of admin</td>
+				<td th:text="${item.price}">Descrition of admin</td>
+				<td>
+					<a th:href="@{'/item/'+${item.id}}" class="btn">See</a> 
+					<a th:href="@{'/item/update/'+${item.id}}" class="btn">Update</a> 
+					<a th:href="@{'/item/delete/'+${item.id}}" class="btn" >Delete</a>
+				</td>
+			</tr>
+		</table>
+
+		<p>
+			<a href="../home.html" th:href="@{/dashboard/}">Return to
+				Dashboard</a>
+		</p>
+	</div>
+</body>
+</html>

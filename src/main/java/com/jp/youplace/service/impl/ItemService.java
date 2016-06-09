@@ -2,6 +2,8 @@ package com.jp.youplace.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import com.jp.youplace.domain.ItemRepository;
 import com.jp.youplace.service.IItemService;
 
 @Service
+@Transactional
 public class ItemService implements IItemService {
 	
 	@Autowired
