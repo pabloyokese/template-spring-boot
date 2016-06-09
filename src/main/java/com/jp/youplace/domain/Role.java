@@ -13,13 +13,22 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String roleName;
+	private String name;
+	private String description;
 
-	@ManyToMany(mappedBy="roles")
+	@ManyToMany(mappedBy = "roles")
 	private List<User> users;
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<User> getUsers() {
@@ -35,11 +44,11 @@ public class Role {
 	}
 
 	public String getName() {
-		return roleName;
+		return name;
 	}
 
-	public void setName(String roleName) {
-		this.roleName = roleName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

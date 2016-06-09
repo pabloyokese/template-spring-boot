@@ -21,7 +21,9 @@
 					<li th:class="${current} == 'dashboard' ? 'active' : ''"><a
 						th:href="@{/dashboard/}">Dashboard</a></li>
 					<li th:class="${current} == 'user' ? 'active' : ''"><a
-						th:href="@{/user/}">List Users</a></li>
+						th:href="@{/user/}">Users</a></li>
+						<li th:class="${current} == 'role' ? 'active' : ''"><a
+						th:href="@{/role/}">Roles</a></li>
 					<li sec:authorize="!isAuthenticated()"
 						th:class="${current} == 'login' ? 'active' : ''"><a
 						th:href="@{/login/}">Login</a></li>

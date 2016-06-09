@@ -1,5 +1,6 @@
 package com.jp.youplace.main;
 
+import com.jp.youplace.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.List;
 @WebAppConfiguration
 public class YourPlaceApplicationTests {
 	@Autowired
-	UserService userService;
+    IUserService userService;
 
 	@Test
 	public void createUser() {
@@ -59,7 +60,7 @@ public class YourPlaceApplicationTests {
 		userService.delete(user);
 
 		long totalUsers = userService.count();
-		assertEquals(totalUsers, 2);
+		assertEquals(totalUsers, 3);
 	}
 	
 	@Test

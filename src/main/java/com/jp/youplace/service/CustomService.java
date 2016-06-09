@@ -2,8 +2,6 @@ package com.jp.youplace.service;
 
 import java.util.List;
 
-import org.springframework.data.repository.NoRepositoryBean;
-@NoRepositoryBean
 public interface CustomService<T> {
 	public List<T> findAll();
 

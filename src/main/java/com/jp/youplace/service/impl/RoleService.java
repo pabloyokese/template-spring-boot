@@ -4,48 +4,48 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jp.youplace.domain.Role;
+import com.jp.youplace.domain.RoleRepository;
 import com.jp.youplace.service.IRoleService;
 
 @Service
 @Transactional
 public class RoleService implements IRoleService {
 
+	@Autowired
+	RoleRepository roleRepository;
+	
 	@Override
 	public List<Role> findAll() {
-		return null;
+		return roleRepository.findAll();
 	}
 
 	@Override
 	public Role findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.findOne(id);
 	}
 
 	@Override
 	public void save(Role role) {
-		// TODO Auto-generated method stub
-		
+		roleRepository.save(role);
 	}
 
 	@Override
 	public Long count() {
-		// TODO Auto-generated method stub
-		return null;
+		return roleRepository.count();
 	}
 
 	@Override
 	public void delete(Role role) {
-		// TODO Auto-generated method stub
-		
+		roleRepository.delete(role);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		
+		roleRepository.deleteById(id);
 	}
 	
 }

@@ -20,4 +20,6 @@ public interface CustomRepository<T, ID extends Serializable> extends CrudReposi
 	void delete(T entity);
 
 	boolean exists(ID primaryKey);
+	
+	void deleteById(Long id);
 }
