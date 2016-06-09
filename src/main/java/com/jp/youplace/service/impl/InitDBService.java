@@ -1,5 +1,6 @@
 package com.jp.youplace.service.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.jp.youplace.domain.Item;
+import com.jp.youplace.domain.ItemRepository;
 import com.jp.youplace.domain.Role;
 import com.jp.youplace.domain.RoleRepository;
 import com.jp.youplace.domain.UserRepository;
+import com.jp.youplace.service.IItemService;
 import com.jp.youplace.domain.User;
 
 @Service
@@ -21,6 +25,8 @@ public class InitDBService {
 	@Autowired
 	RoleRepository roleRepository;
 	
+	@Autowired
+	IItemService itemService;
 	
 	@PostConstruct
 	public void init(){
@@ -47,5 +53,15 @@ public class InitDBService {
 		roles.add(roleUser);
 		userAdmin.setRoles(roles);
 		userRepository.save(userAdmin);
+		
+		
+		Item item = new Item();
+		item.setName("Item 1");
+		item.setDescription("this is the description for this item");
+		item.setPrice(new BigDecimal(10.3));
+		item.setStock(10);
+		itemService.save(item);
+
+		
 	}
 }

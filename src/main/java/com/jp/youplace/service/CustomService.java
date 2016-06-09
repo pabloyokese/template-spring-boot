@@ -7,11 +7,11 @@ public interface CustomService<T> {
 
 	public T findOne(Long id);
 
-	public void save(T role);
+	public void save(T entity);
 
 	public Long count();
 
-	public void delete(T role);
+	public void delete(T entity);
 
 	public void deleteById(Long id);
 }
