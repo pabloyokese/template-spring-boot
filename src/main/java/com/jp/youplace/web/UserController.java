@@ -1,5 +1,6 @@
 package com.jp.youplace.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jp.youplace.domain.Role;
 import com.jp.youplace.domain.User;
+import com.jp.youplace.service.IRoleService;
 import com.jp.youplace.service.IUserService;
+import com.jp.youplace.service.impl.RoleService;
 import com.jp.youplace.service.impl.UserService;
 
 @Controller
@@ -20,6 +25,9 @@ public class UserController {
 
 	@Autowired
 	IUserService userService;
+	
+	@Autowired
+	IRoleService roleService;
 
 	@ModelAttribute("user")
 	public User constructUser() {
@@ -70,6 +78,44 @@ public class UserController {
 		userService.deleteById(id);
 		model.addAttribute("current","user");
 		return "redirect:/user/?deletesuccess=true";
+	}
+	
+	@RequestMapping("/asign-role/{id}")
+	public String asignRoles(Model model,@PathVariable long id){
+		User user = userService.findOne(id);
+		List<Role> roles = roleService.findAll();
+		List<Role> userRoles = user.getRoles();		
+		FormResult form = new FormResult();
+		form.setRoles(userRoles);
+		
+		model.addAttribute("user",user);
+		model.addAttribute("roles",roles);
+		model.addAttribute("form",form);
+		return "user/asign-role";
+	}
+	
+	
+	
+	@ModelAttribute("form")
+	public FormResult constructForm(){
+		return new FormResult();
+	}
+	@RequestMapping(value="/asign-role", method=RequestMethod.POST)
+	public String doAsignRoles(Model model,@ModelAttribute("form") FormResult form,@RequestParam long userId){
+		User user = userService.findOne(userId);
+		user.setRoles(form.getRoles());
+		userService.save(user);
+		return "redirect:/user/asign-role/"+userId+"?addrolesuccess=true"; 
+	}
+	
+	class FormResult{
+		private List<Role> roles;
+		public List<Role> getRoles() {
+			return roles;
+		}
+		public void setRoles(List<Role> roles) {
+			this.roles = roles;
+		}
 	}
 	
 }

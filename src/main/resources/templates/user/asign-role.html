@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Asign Roles to User</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>Asign roles to user</h1>
+		<div th:if="${#bools.isTrue(param.addrolesuccess)}" class="alert alert-success">
+		add successfull!
+		</div>
+		<span th:text="${user.firstName}">Juan </span> <span
+			th:text="${user.lastName}">Oquendo</span> <span
+			th:text="${user.userName}">pabloyokese</span> <span
+			th:text="${user.age}">30</span>
+		<p>
+		<form method="post" th:action="@{/user/asign-role}">
+		<input type="hidden" th:value="${user.id}" name="userId"/>
+		<select
+            multiple="multiple"
+            name="roles"
+            class="form-control"
+            size="5"
+            id="roles">
+            <option th:each = "role : ${roles}" 
+            th:selected="${form.roles} != null AND ${#lists.contains(form.roles,role)} ? selected" 
+            th:value="${role.id}" th:text="${role.name}">
+            </option>
+          </select>
+          <input type="submit" value="Save" class="btn btn-primary" />
+        </form>
+		<a href="../home.html" th:href="@{/user/}">Return to user list</a>
+		</p>
+	</div>
+</body>
+</html>
