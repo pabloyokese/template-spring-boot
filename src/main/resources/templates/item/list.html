@@ -22,7 +22,7 @@
 				<td th:text="${item.description}">Descrition of admin</td>
 				<td th:text="${item.stock}">Descrition of admin</td>
 				<td th:text="${item.price}">Descrition of admin</td>
-				<td th:text="${item.category.name}">Descrition of admin</td>
+				<td th:text="${item.category}!=null?${item.category.name}:''">Descrition of admin</td>
 				<td>
 					<a th:href="@{'/item/'+${item.id}}" class="btn">See</a> 
 					<a th:href="@{'/item/update/'+${item.id}}" class="btn">Update</a> 

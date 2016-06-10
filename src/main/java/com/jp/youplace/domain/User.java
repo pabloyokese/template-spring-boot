@@ -27,7 +27,7 @@ public class User {
 	private String gender;
 	
 	@Column(unique = true)
-	@Email(message = "envalid email address !")
+	@Email(message = "invalid email address !")
 	@Size(min = 1, message = "envalid email address !")
 	private String email;
 	
