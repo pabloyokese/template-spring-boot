@@ -2,6 +2,7 @@ package com.jp.youplace.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 public class User {
@@ -21,8 +25,16 @@ public class User {
 	private String lastName;
 	private Integer age;
 	private String gender;
+	
+	@Column(unique = true)
+	@Email(message = "envalid email address !")
+	@Size(min = 1, message = "envalid email address !")
 	private String email;
+	
+	@Size(min = 3, message = "Name must be at least 3 characters !")
+	@Column(unique = true)
 	private String userName;
+	
 	private String password;
 	private boolean enabled;
 	@ManyToMany(fetch = FetchType.EAGER)

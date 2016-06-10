@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html layout:decorator="layouts/template">
+<head>
+<title>Task List</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1>User</h1>
+		<div th:if="${#bools.isTrue(success)}" class="alert alert-success">
+		Registration successfull!
+		</div>
+		<form th:action="@{/user/process-form/}" method="post"  th:object="${user}">
+			<input type="hidden" name="id" th:value="${user.id}" />
+			<div class="form-group">
+				<label>First Name</label> <input type="text" class="form-control"
+					id="firstNameInput" th:field="*{firstName}" placeholder="First Name"
+					th:value="${user.firstName}" />
+				<span
+                th:if="${#fields.hasErrors('firstName')}"
+                class="help-block" 
+                th:errors="*{firstName}"
+              ></span>
+			</div>
+			<div class="form-group">
+				<label>Last Name</label> <input type="text" class="form-control"
+					id="lastNameInput" th:field="*{lastName}" placeholder="Last Name"
+					th:value="${user.lastName}" />
+				<span
+                th:if="${#fields.hasErrors('lastName')}"
+                class="help-block" 
+                th:errors="*{lastName}"
+              ></span>
+			</div>
+			<div class="form-group">
+				<label>Username</label> <input
+					type="text" class="form-control" id="usernameInput"
+					th:field="*{userName}"
+					placeholder="Username"
+					th:value="${user.userName}" />
+					<span
+                th:if="${#fields.hasErrors('userName')}"
+                class="help-block" 
+                th:errors="*{userName}"
+              ></span>
+			</div>
+			<div  class="form-group">
+				<label>Password</label> <input
+					type="password" class="form-control" id="passwordInput"
+					th:field="*{password}"
+					placeholder="Password"
+					th:value="${user.password}" />
+					<span
+                th:if="${#fields.hasErrors('password')}"
+                class="help-block" 
+                th:errors="*{password}"
+              ></span>
+			</div>
+			<div class="form-group">
+				<label>Age</label> <input
+					type="text" class="form-control" id="ageInput"
+					th:field="*{age}"
+					placeholder="Age"
+					th:value="${user.age}" />
+					<span
+                th:if="${#fields.hasErrors('age')}"
+                class="help-block" 
+                th:errors="*{age}"
+              ></span>
+			</div>
+			<div class="form-group">
+				<label>Gender</label> 
+				<select  class="form-control" th:field="*{gender}">
+					<option value="M" th:selected="${user.gender} == 'M' ? 'selected'">Male</option>
+					<option value="F" th:selected="${user.gender} == 'F' ? 'selected'">Female</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Email</label> <input
+					type="email" class="form-control" id="emailInput"
+					th:field="*{email}"
+					placeholder="email"
+					th:value="${user.email}" />
+					<span
+                th:if="${#fields.hasErrors('email')}"
+                class="help-block" 
+                th:errors="*{email}"
+              ></span>
+			</div>
+			<div class="form-group">
+				<label>Enabled</label> 
+				<select  class="form-control" th:field="*{enabled}">
+					<option value="1" th:selected="${user.enabled} == true ? 'selected'">Yes</option>
+					<option value="0" th:selected="${user.enabled} == false ? 'selected'">No</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>Roles</label> 
+				<select
+		            multiple="multiple"
+		            th:field="*{roles}"
+		            class="form-control"
+		            size="5"
+		            id="roles">
+		            <option th:each = "role : ${allRoles}" 
+		            th:selected="${user.roles} != null AND ${#lists.contains(user.roles,role)} ? selected" 
+		            th:value="${role.id}" th:text="${role.name}">
+		            </option>
+         		</select>
+			</div>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+		<p>
+			<a href="../home.html" th:href="@{/user/}">Return to user list</a>
+		</p>
+	</div>
+</body>
+</html>
