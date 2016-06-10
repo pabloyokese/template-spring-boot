@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 
 @Entity
-public class User {
+public class User extends AObject {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,18 +25,18 @@ public class User {
 	private String lastName;
 	private Integer age;
 	private String gender;
-	
+
 	@Column(unique = true)
 	@Email(message = "invalid email address !")
 	@Size(min = 1, message = "envalid email address !")
 	private String email;
-	
+
 	@Size(min = 3, message = "Name must be at least 3 characters !")
 	@Column(unique = true)
 	private String userName;
-	
+
 	private String password;
-	private boolean enabled;
+	// private boolean enabled;
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable
 	private List<Role> roles;
@@ -55,7 +55,6 @@ public class User {
 		this.email = user.email;
 		this.userName = user.userName;
 		this.password = user.password;
-		this.enabled = user.enabled;
 		this.roles = user.roles;
 	}
 
@@ -78,15 +77,6 @@ public class User {
 		this.email = email;
 		this.userName = user;
 		this.password = password;
-		this.enabled = enabled;
-	}
-
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public String getFirstName() {
@@ -159,6 +149,19 @@ public class User {
 
 	public void setItems(List<Item> items) {
 		this.items = items;
+	}
+
+	@Override
+	public void editFrom(AObject object) {
+		if (object instanceof User) {
+			User user = (User) object;
+			this.firstName = user.firstName;
+			this.lastName = user.lastName;
+			this.age = user.age;
+			this.gender = user.gender;
+			this.email = user.email;
+			this.userName = user.userName;
+		}
 	}
 
 }

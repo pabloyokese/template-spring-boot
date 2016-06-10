@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Role {
+public class Role extends AObject{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -49,6 +49,12 @@ public class Role {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public void editFrom(AObject object) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

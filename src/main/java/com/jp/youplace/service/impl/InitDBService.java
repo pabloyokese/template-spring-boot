@@ -2,6 +2,7 @@ package com.jp.youplace.service.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -37,10 +38,14 @@ public class InitDBService {
 	public void init(){
 		Role roleUser = new Role();
 		roleUser.setName("ROLE_USER");
+		roleUser.setCreatedBy("admin");
+		roleUser.setCreationDate(new Date());
 		roleRepository.save(roleUser);
 		
 		Role roleAdmin = new Role();
 		roleAdmin.setName("ROLE_ADMIN");
+		roleAdmin.setCreatedBy("admin");
+		roleAdmin.setCreationDate(new Date());
 		roleRepository.save(roleAdmin);
 		
 		User userAdmin = new User();
@@ -53,6 +58,8 @@ public class InitDBService {
 		userAdmin.setEnabled(true);
 		userAdmin.setFirstName("Juan Pablo");
 		userAdmin.setLastName("oquendo");
+		userAdmin.setCreatedBy("admin");
+		userAdmin.setCreationDate(new Date());
 		List<Role> roles = new ArrayList<Role>();
 		roles.add(roleAdmin);
 		roles.add(roleUser);
@@ -62,14 +69,20 @@ public class InitDBService {
 
 		Category categoryParent = new Category();
 		categoryParent.setName("Car");
+		categoryParent.setCreatedBy("admin");
+		categoryParent.setCreationDate(new Date());
 		categoryService.save(categoryParent);
 		
 		Category categoryChild = new Category();
 		categoryChild.setName("Houses");
+		categoryChild.setCreatedBy("admin");
+		categoryChild.setCreationDate(new Date());
 		categoryService.save(categoryChild);
 		
 		Category categoryChild2 = new Category();
 		categoryChild2.setName("Electronics");
+		categoryChild2.setCreatedBy("admin");
+		categoryChild2.setCreationDate(new Date());
 		categoryService.save(categoryChild2);
 		
 		Item item = new Item();
@@ -79,6 +92,8 @@ public class InitDBService {
 		item.setStock(10);
 		item.setUser(userAdmin);
 		item.setCategory(categoryChild2);
+		item.setCreatedBy("admin");
+		item.setCreationDate(new Date());
 		itemService.save(item);
 		
 		

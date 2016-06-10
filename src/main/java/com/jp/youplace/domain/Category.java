@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Category {
+public class Category extends AObject{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -43,6 +43,12 @@ public class Category {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Override
+	public void editFrom(AObject object) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

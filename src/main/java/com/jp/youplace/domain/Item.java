@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Item {
+public class Item extends AObject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -79,5 +79,11 @@ public class Item {
 	
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	@Override
+	public void editFrom(AObject object) {
+		// TODO Auto-generated method stub
+		
 	}
 }
